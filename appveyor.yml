@@ -27,10 +27,11 @@ image: Ubuntu
 # set clone depth
 clone_depth: 5                      # clone entire repository history if not defined
 
-after_build:
+build:
+  - dotnet build
   - cd helloWorld
   - dotnet publish -c Release -r ubuntu-x64 /p:PublishSingleFile=true
-  - ls helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish
+  - ls bin/Release/netcoreapp3.1/ubuntu-x64/publish
 
 #---------------------------------#
 #     deployment configuration    #
