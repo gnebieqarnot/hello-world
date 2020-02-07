@@ -49,17 +49,17 @@ artifacts:
 # provider names are case-sensitive!
 deploy:
   # Deploy to GitHub Releases
-  # tag: $(APPVEYOR_REPO_TAG_NAME)
-  provider: Environment
-  name: "release env"
+  # # provider: Environment
+  # name: "release env"
 
-  # - provider: GitHub
-    # description: 'Release description'
-    # draft: false
-    # prerelease: false
-    # auth_token:
-      # secure: 7137bb1e9bea557f17b59b6c0fbff3b9a77cecd7
-    # on:
-      # APPVEYOR_REPO_TAG: true       # deploy on tag push only
+  tag: $(APPVEYOR_REPO_TAG_NAME)
+  - provider: GitHub
+    description: 'Release description'
+    draft: false
+    prerelease: false
+    auth_token:
+      secure: 7137bb1e9bea557f17b59b6c0fbff3b9a77cecd7
+    on:
+      APPVEYOR_REPO_TAG: true       # deploy on tag push only
     # artifact: helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish/helloWorld           # upload all NuGet packages to release assets
     # artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
