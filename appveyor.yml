@@ -42,7 +42,6 @@ test_script:
 #     deployment configuration    #
 #---------------------------------#
 
-# tag: $(APPVEYOR_REPO_TAG_NAME)
 artifacts:
   - path: artifacts\helloWorld
     name: ReleaseArtifacts
@@ -54,6 +53,8 @@ deploy:
   # name: "release env"
 
   - provider: GitHub
+    tag: $(APPVEYOR_REPO_TAG_NAME)
+    force_update: true
     description: 'Release description'
     release: $(appveyor_repo_tag_name)
     draft: false
@@ -62,10 +63,8 @@ deploy:
       secure: 7137bb1e9bea557f17b59b6c0fbff3b9a77cecd7
     on:
       branch: master
-      # appveyor_repo_tag: false
-      APPVEYOR_REPO_TAG: true
-      # do_rel: true
-      DO_REL: true
+      appveyor_repo_tag: false
+      do_rel: true
       # APPVEYOR_REPO_TAG: true       # deploy on tag push only
     # artifact: helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish/helloWorld           # upload all NuGet packages to release assets
     # artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
