@@ -65,8 +65,8 @@ deploy:
       secure: 84VwVYVnUliNjxPLmOCPbm3WK7T+ZXMsP1uk+zoeD1bl7iBlMtiZzCvnjkqeDtVV
     on:
       branch: master
-      # appveyor_repo_tag: false
-      # do_rel: true
+      appveyor_repo_tag: false
+      do_rel: true
       # APPVEYOR_REPO_TAG: true       # deploy on tag push only
     # artifact: helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish/helloWorld           # upload all NuGet packages to release assets
     # artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
