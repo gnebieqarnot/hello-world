@@ -42,12 +42,12 @@ test_script:
 #     deployment configuration    #
 #---------------------------------#
 
+artifacts:
+  - path: artifacts\*
+    name: ReleaseArtifacts
 # providers: Local, FTP, WebDeploy, AzureCS, AzureBlob, S3, NuGet, Environment
 # provider names are case-sensitive!
 deploy:
-    artifacts:
-      - path: artifacts\*
-        name: ReleaseArtifacts
     # Deploy to GitHub Releases
   - provider: GitHub
     description: 'Release description'
