@@ -33,6 +33,7 @@ build_script:
 
 after_build:
   - dotnet publish helloWorld -c Release -r ubuntu-x64 /p:PublishSingleFile=true -o ./artifacts
+  - dotnet publish helloWorld -c Release -r win10-x6 /p:PublishSingleFile=true -o ./artifacts
   - ls artifacts
 
 test_script:
@@ -42,9 +43,9 @@ test_script:
 #     deployment configuration    #
 #---------------------------------#
 
-# artifacts:
-#   - path: artifacts\helloWorld
-#     name: ReleaseArtifacts
+artifacts:
+  - path: artifacts\*
+    name: ReleaseArtifacts
 # providers: Local, FTP, WebDeploy, AzureCS, AzureBlob, S3, NuGet, Environment
 # provider names are case-sensitive!
 deploy:
@@ -54,7 +55,7 @@ deploy:
 
   - provider: GitHub
     # tag: $(APPVEYOR_REPO_TAG_NAME)
-    # artifact: ReleaseArtifacts
+    artifact: ReleaseArtifacts
     # force_update: true
     description: 'Release description'
     # release: $(appveyor_repo_tag_name)
