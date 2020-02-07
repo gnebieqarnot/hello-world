@@ -33,10 +33,10 @@ build_script:
 
 after_build:
   - dotnet publish helloWorld -c Release -r ubuntu-x64 /p:PublishSingleFile=true -o ./artifacts
-  - ls helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish
+  - ls artifacts
 
 test_script:
-  - dotnet test ./helloWorld.Test/helloWorld.Test.csproj
+  - dotnet test ./*.Test
 
 #---------------------------------#
 #     deployment configuration    #
