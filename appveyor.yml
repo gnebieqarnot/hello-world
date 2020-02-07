@@ -36,6 +36,7 @@ clone_depth: 5                      # clone entire repository history if not def
 deploy:
     # Deploy to GitHub Releases
   - provider: GitHub
+    description: 'Release description'
     artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
