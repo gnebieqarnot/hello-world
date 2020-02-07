@@ -29,9 +29,8 @@ clone_depth: 5                      # clone entire repository history if not def
 
 build_script:
   - dotnet build
-  - cd helloWorld
-  - dotnet publish -c Release -r ubuntu-x64 /p:PublishSingleFile=true
-  - ls bin/Release/netcoreapp3.1/ubuntu-x64/publish
+  - (cd helloWorld && dotnet publish -c Release -r ubuntu-x64 /p:PublishSingleFile=true)
+  - ls helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish
 
 #---------------------------------#
 #     deployment configuration    #
@@ -43,7 +42,8 @@ deploy:
     # Deploy to GitHub Releases
   - provider: GitHub
     description: 'Release description'
-    artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
+    artifact: helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish           # upload all NuGet packages to release assets
+    # artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
     on:
