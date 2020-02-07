@@ -35,6 +35,7 @@ after_build:
   - dotnet publish helloWorld -c Release -r ubuntu-x64 /p:PublishSingleFile=true -o ./artifacts
   # - dotnet publish helloWorld -c Release -r win10-x6 /p:PublishSingleFile=true -o ./artifacts
   - ls artifacts
+  - rm artifacts/*.pdb
 
 test_script:
   - dotnet test ./*.Test
@@ -64,9 +65,9 @@ deploy:
     auth_token:
       secure: hcbPO46qyB0R/KZWfwGR4sVt8keXe52HZ+VeiC+MoeLkF50OBIZ1C0bT6EDzs0by
     on:
-      branch: master
+      # branch: master
       # appveyor_repo_tag: false
       # do_rel: true
-      # APPVEYOR_REPO_TAG: true       # deploy on tag push only
+      APPVEYOR_REPO_TAG: true       # deploy on tag push only
     # artifact: helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish/helloWorld           # upload all NuGet packages to release assets
     # artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
