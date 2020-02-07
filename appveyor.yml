@@ -27,6 +27,9 @@ image: Ubuntu
 # set clone depth
 clone_depth: 5                      # clone entire repository history if not defined
 
+after_build:
+  - dotnet publish -c Release -r ubuntu-x64 /p:PublishSingleFile=true
+
 #---------------------------------#
 #     deployment configuration    #
 #---------------------------------#
