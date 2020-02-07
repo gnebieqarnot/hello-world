@@ -70,4 +70,4 @@ deploy:
       # do_rel: true
       APPVEYOR_REPO_TAG: true       # deploy on tag push only
     # artifact: helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish/helloWorld           # upload all NuGet packages to release assets
-    # artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
+    # artifact: /.*\.nupkg/            # upload all NuGet packages to release assets
