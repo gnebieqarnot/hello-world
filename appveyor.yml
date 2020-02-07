@@ -60,13 +60,13 @@ deploy:
     # release: $(appveyor_repo_tag_name)
     draft: false
     prerelease: false
-    # auth_token: 7137bb1e9bea557f17b59b6c0fbff3b9a77cecd7
+    auth_token:  432f69508c6ea30c56cd190f3488e8ccede90907
     # auth_token:
     #   secure: 84VwVYVnUliNjxPLmOCPbm3WK7T+ZXMsP1uk+zoeD1bl7iBlMtiZzCvnjkqeDtVV
     on:
       branch: master
-      appveyor_repo_tag: false
-      do_rel: true
+      # appveyor_repo_tag: false
+      # do_rel: true
       # APPVEYOR_REPO_TAG: true       # deploy on tag push only
     # artifact: helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish/helloWorld           # upload all NuGet packages to release assets
     # artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
