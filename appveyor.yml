@@ -53,9 +53,9 @@ deploy:
   # name: "release env"
 
   - provider: GitHub
-    tag: $(APPVEYOR_REPO_TAG_NAME)
+    # tag: $(APPVEYOR_REPO_TAG_NAME)
     artifact: ReleaseArtifacts
-    force_update: true
+    # force_update: true
     description: 'Release description'
     release: $(appveyor_repo_tag_name)
     draft: false
