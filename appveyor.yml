@@ -61,8 +61,8 @@ deploy:
     draft: false
     prerelease: false
     # auth_token: 7137bb1e9bea557f17b59b6c0fbff3b9a77cecd7
-    auth_token:
-      secure: 84VwVYVnUliNjxPLmOCPbm3WK7T+ZXMsP1uk+zoeD1bl7iBlMtiZzCvnjkqeDtVV
+    # auth_token:
+    #   secure: 84VwVYVnUliNjxPLmOCPbm3WK7T+ZXMsP1uk+zoeD1bl7iBlMtiZzCvnjkqeDtVV
     on:
       branch: master
       appveyor_repo_tag: false
