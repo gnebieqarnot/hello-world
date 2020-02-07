@@ -33,7 +33,7 @@ build_script:
 
 after_build:
   - dotnet publish helloWorld -c Release -r ubuntu-x64 /p:PublishSingleFile=true -o ./artifacts
-  - dotnet publish helloWorld -c Release -r win10-x6 /p:PublishSingleFile=true -o ./artifacts
+  # - dotnet publish helloWorld -c Release -r win10-x6 /p:PublishSingleFile=true -o ./artifacts
   - ls artifacts
 
 test_script:
