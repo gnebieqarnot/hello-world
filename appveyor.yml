@@ -28,9 +28,15 @@ image: Ubuntu
 clone_depth: 5                      # clone entire repository history if not defined
 
 build_script:
-  - dotnet build
-  - (cd helloWorld && dotnet publish -c Release -r ubuntu-x64 /p:PublishSingleFile=true)
+  - dotnet --info
+  - dotnet build -c Release
+
+after_build:
+  - dotnet publish helloWorld -c Release -r ubuntu-x64 /p:PublishSingleFile=true -o ./artifacts
   - ls helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish
+
+test_script:
+  - dotnet test ./helloWorld.Test/helloWorld.Test.csproj
 
 #---------------------------------#
 #     deployment configuration    #
@@ -39,12 +45,15 @@ build_script:
 # providers: Local, FTP, WebDeploy, AzureCS, AzureBlob, S3, NuGet, Environment
 # provider names are case-sensitive!
 deploy:
+    artifacts:
+      - path: artifacts\*
+        name: ReleaseArtifacts
     # Deploy to GitHub Releases
   - provider: GitHub
     description: 'Release description'
-    artifact: helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish           # upload all NuGet packages to release assets
-    # artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
     on:
       APPVEYOR_REPO_TAG: true       # deploy on tag push only
+    # artifact: helloWorld/bin/Release/netcoreapp3.1/ubuntu-x64/publish/helloWorld           # upload all NuGet packages to release assets
+    # artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
