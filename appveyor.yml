@@ -28,7 +28,7 @@ branches:
 
 dotnet_csproj:
   patch: true
-  file: '**\*.csproj'
+  file: 'helloWorld\*.csproj'
   version: '{version}'
 
 # set clone depth
