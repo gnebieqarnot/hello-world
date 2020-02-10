@@ -4,17 +4,18 @@
 #   - Indent each level of configuration with 2 spaces. Do not use tabs!
 #   - All section names are case-sensitive.
 #   - Section names should be unique on each level.
-image:
-  - Visual Studio 2019
-  - Ubuntu
 
 #---------------------------------#
 #      general configuration      #
 #---------------------------------#
 
 # version format
-version: 1.0.{build}
+# version: 1.0.{build}
 
+# os to use
+image:
+  - Visual Studio 2019
+  - Ubuntu
 # you can use {branch} name in version format too
 # version: 1.0.{build}-{branch}
 
@@ -25,7 +26,10 @@ branches:
     - master
     - production
 
-# image: Ubuntu
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
 
 # set clone depth
 clone_depth: 5                      # clone entire repository history if not defined
