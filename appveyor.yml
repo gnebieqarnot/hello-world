@@ -36,7 +36,7 @@ build_script:
 
 after_build:
   - sh: dotnet publish helloWorld -c Release -r ubuntu-x64 /p:PublishSingleFile=true -o ./artifacts
-  - cmd: dotnet publish helloWorld -c Release -r win10-x6 /p:PublishSingleFile=true -o ./artifacts
+  - cmd: dotnet publish helloWorld -c Release -r win10-x64 /p:PublishSingleFile=true -o ./artifacts
   - ls artifacts
   - rm artifacts/*.pdb
 
