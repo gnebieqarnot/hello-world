@@ -30,19 +30,28 @@ branches:
 # set clone depth
 clone_depth: 5                      # clone entire repository history if not defined
 
-build_script:
-  - dotnet --info
-  - dotnet build -c Release
+build:
+  project: helloWorld.sln
+  verbosity: minimal
+  configuration: Release
+  publish_nuget: false
+  publish_aspnet_core: false
+  publish_core_console: true
 
-after_build:
-  - sh: dotnet publish helloWorld -c Release -r ubuntu-x64 /p:PublishSingleFile=true -o ./artifacts
-  - cmd: dotnet publish helloWorld -c Release -r win10-x64 /p:PublishSingleFile=true -o ./artifacts
-  - ls artifacts
-  - rm artifacts/*.pdb
+# build_script:
+#   - dotnet --info
+#   - dotnet build -c Release
 
-test_script:
-  - sh: dotnet test ./*.Test
-  - cmd: dotnet test
+# after_build:
+#   # change "helloWorld" by the project folder name
+#   - sh: dotnet publish helloWorld -c Release -r ubuntu-x64 /p:PublishSingleFile=true -o ./artifacts
+#   - cmd: dotnet publish helloWorld -c Release -r win10-x64 /p:PublishSingleFile=true -o ./artifacts
+#   - ls artifacts
+#   - rm artifacts/*.pdb
+
+# test_script:
+#   - sh: dotnet test ./*.Test
+#   - cmd: dotnet test
 
 #---------------------------------#
 #     deployment configuration    #
