@@ -41,7 +41,8 @@ after_build:
   - rm artifacts/*.pdb
 
 test_script:
-  - dotnet test ./*.Test
+  - sh: dotnet test ./*.Test
+  - cmd: dotnet test
 
 #---------------------------------#
 #     deployment configuration    #
