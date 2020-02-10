@@ -25,7 +25,7 @@ branches:
     - master
     - production
 
-image: Ubuntu
+# image: Ubuntu
 
 # set clone depth
 clone_depth: 5                      # clone entire repository history if not defined
